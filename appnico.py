@@ -60,7 +60,7 @@ if not df_actual.empty:
     st.sidebar.metric("Notas Totales", len(df_actual))
     
     # Opción para descargar una copia limpia
-    csv_data = df_actual.to_excel(file_name)
+    csv_data = df_actual.to_excel()
     st.sidebar.download_button("📥 Descargar reporte", data=csv_data, file_name="reporte_final.xlsx")
 else:
     st.info("El archivo de base de datos está vacío. Empieza a registrar para crear el historial.")
