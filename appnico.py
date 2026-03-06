@@ -3,14 +3,6 @@ import pandas as pd
 import os
 from datetime import datetime
 
-# --- CONFIGURACIÓN DE ARCHIVO ---
-ARCHIVO_DB = "/Users/robaboian/Desktop/Argentinos Juniors/registro_scouting.xlsx"
-
-def cargar_datos():
-    if os.path.exists(ARCHIVO_DB):
-        return pd.read_excel(ARCHIVO_DB)
-    return pd.DataFrame(columns=["Codigo", "Nota", "Fecha"])
-
 def guardar_datos(df):
     df.to_excel(ARCHIVO_DB, index=False)
 
@@ -59,7 +51,7 @@ if not df_actual.empty:
     st.sidebar.metric("Notas Totales", len(df_actual))
     
     # Opción para descargar una copia limpia
-    csv_data = df_actual.to_csv(index=False).encode('utf-8')
-    st.sidebar.download_button("📥 Descargar Copia .CSV", data=csv_data, file_name="reporte_final.csv")
+    csv_data = df_actual.to_excel(index=False).encode('utf-8')
+    st.sidebar.download_button("📥 Descargar reporte", data=csv_data, file_name="reporte_final.xlsx")
 else:
     st.info("El archivo de base de datos está vacío. Empieza a registrar para crear el historial.")
