@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from datetime import datetime
+from openpyxl.workbook import Workbook
 
 # --- CONFIGURACIÓN DE ARCHIVO ---
 ARCHIVO_DB = "/Users/robaboian/Desktop/Argentinos Juniors/registro_scouting.xlsx"
