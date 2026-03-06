@@ -10,7 +10,7 @@ ARCHIVO_DB = "data/registro_scouting.xlsx"
 def cargar_datos():
     if os.path.exists(ARCHIVO_DB):
         return pd.read_excel(ARCHIVO_DB)
-    return pd.DataFrame(columns=["Codigo", "Nota", "Fecha"])
+    return pd.DataFrame(columns=["Código", "Nota", "Fecha"])
 
 def guardar_datos(df):
     os.makedirs(os.path.dirname(ARCHIVO_DB), exist_ok=True)
@@ -43,7 +43,7 @@ with st.form("formulario_nota", clear_on_submit=True):
 if submit:
     if len(codigo) == 4 and nota.strip():
         nueva_fila = pd.DataFrame([{
-            "Codigo": codigo,
+            "Código": codigo,
             "Nota": nota.strip(),
             "Fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }])
