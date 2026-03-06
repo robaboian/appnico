@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # --- CONFIGURACIÓN DE ARCHIVO ---
-ARCHIVO_DB = "data/registro_scouting.xlsx"
+ARCHIVO_DB = "/Users/robaboian/Desktop/Argentinos Juniors/registro_scouting.xlsx"
 
 def cargar_datos():
     if os.path.exists(ARCHIVO_DB):
