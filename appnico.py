@@ -3,6 +3,14 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# --- CONFIGURACIÓN DE ARCHIVO ---
+ARCHIVO_DB = "data/registro_scouting.xlsx"
+
+def cargar_datos():
+    if os.path.exists(ARCHIVO_DB):
+        return pd.read_excel(ARCHIVO_DB)
+    return pd.DataFrame(columns=["Codigo", "Nota", "Fecha"])
+
 def guardar_datos(df):
     df.to_excel(ARCHIVO_DB, index=False)
 
@@ -11,7 +19,7 @@ st.set_page_config(page_title="ScoutFlow Permanente", page_icon="💾")
 st.title("💾 ScoutFlow: Almacenamiento Local")
 
 # Cargar base de datos al iniciar
-
+df_actual = cargar_datos()
 
 with st.form("formulario_nota", clear_on_submit=True):
     col1, col2 = st.columns([1, 3])
@@ -51,7 +59,7 @@ if not df_actual.empty:
     st.sidebar.metric("Notas Totales", len(df_actual))
     
     # Opción para descargar una copia limpia
-    csv_data = df_actual.to_excel(index=False).encode('utf-8')
+    csv_data = df_actual.to_excel(index=False)
     st.sidebar.download_button("📥 Descargar reporte", data=csv_data, file_name="reporte_final.xlsx")
 else:
     st.info("El archivo de base de datos está vacío. Empieza a registrar para crear el historial.")
