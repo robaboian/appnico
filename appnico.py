@@ -11,7 +11,7 @@ st.set_page_config(page_title="ScoutFlow Permanente", page_icon="💾")
 st.title("💾 ScoutFlow: Almacenamiento Local")
 
 # Cargar base de datos al iniciar
-df_actual = cargar_datos()
+
 
 with st.form("formulario_nota", clear_on_submit=True):
     col1, col2 = st.columns([1, 3])
